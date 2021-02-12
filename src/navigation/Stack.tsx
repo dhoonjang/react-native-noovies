@@ -2,16 +2,14 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { getFocusedRouteNameFromRoute, Route } from "@react-navigation/native";
 import Detail from "../screens/Detail";
+import AddForm from "../screens/AddForm";
 
 import Tabs from "./Tabs";
 
 const Stack = createStackNavigator();
 
 export function getHeaderTitle(route: Route<"Tab", object | undefined>) {
-  // If the focused route is not found, we need to assume it's the initial screen
-  // This can happen during if there hasn't been any navigation inside the screen
-  // In our case, it's "Feed" as that's the first screen inside the navigator
-  const routeName = getFocusedRouteNameFromRoute(route) ?? "Movies";
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "Main";
 
   return routeName;
 }
@@ -36,5 +34,6 @@ export default () => (
       })}
     />
     <Stack.Screen name="Detail" component={Detail} />
+    <Stack.Screen name="AddForm" component={AddForm} />
   </Stack.Navigator>
 );
